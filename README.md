@@ -1,5 +1,11 @@
 # Akela-KeyLogger
 
+![status][st:stable]
+
+ [st:stable]: https://img.shields.io/badge/stable-✔-black.png?style=flat&colorA=44cc11&colorB=494e52
+ [st:broken]: https://img.shields.io/badge/broken-X-black.png?style=flat&colorA=e05d44&colorB=494e52
+ [st:experimental]: https://img.shields.io/badge/experimental----black.png?style=flat&colorA=dfb317&colorB=494e52
+
 The `KeyLogger` plugin, as the name suggests, implements a key logger for the
 Keyboardio firmware. It logs the row and column of every key press and release,
 along with the event, and the layer number, in a format that is reasonably easy
