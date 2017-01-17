@@ -50,4 +50,4 @@ KL: row=1, col=2, pressed=0, defaultLayer=0, layerState=1, mappedKey.flags=0, ma
 Starting from the [example][plugin:example] is the recommended way of getting
 started with the plugin.
 
- [plugin:example]: https://github.com/Akela-Plugins/Akela-KeyLogger/blob/master/examples/KeyLogger/KeyLogger.ino
+ [plugin:example]: https://github.com/keyboardio/Akela-KeyLogger/blob/master/examples/KeyLogger/KeyLogger.ino
