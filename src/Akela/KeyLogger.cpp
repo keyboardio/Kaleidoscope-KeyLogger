@@ -26,7 +26,7 @@ namespace Akela {
   void
   KeyLogger::begin (void) {
     Serial.begin (9600);
-    event_handler_hook_add (this->logger);
+    event_handler_hook_use (this->logger);
   }
 
   Key
