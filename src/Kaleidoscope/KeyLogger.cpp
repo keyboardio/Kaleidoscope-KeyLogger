@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * Akela -- Animated Keyboardio Extension Library for Anything
+ * Kaleidoscope-KeyLogger -- A key logger
  * Copyright (C) 2016, 2017  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <Akela-KeyLogger.h>
+#include <Kaleidoscope-KeyLogger.h>
 
-namespace Akela {
+namespace KaleidoscopePlugins {
 
   KeyLogger::KeyLogger (void) {
   }
@@ -55,4 +55,4 @@ namespace Akela {
   }
 };
 
-Akela::KeyLogger KeyLogger;
+KaleidoscopePlugins::KeyLogger KeyLogger;

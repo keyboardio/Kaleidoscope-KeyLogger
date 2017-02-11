@@ -1,4 +1,4 @@
-# Akela-KeyLogger
+# Kaleidoscope-KeyLogger
 
 ![status][st:stable]
 
@@ -7,7 +7,7 @@
  [st:experimental]: https://img.shields.io/badge/experimental----black.png?style=flat&colorA=dfb317&colorB=494e52
 
 The `KeyLogger` plugin, as the name suggests, implements a key logger for the
-Keyboardio firmware. It logs the row and column of every key press and release,
+Kaleidoscope firmware. It logs the row and column of every key press and release,
 along with the event, and the layer number, in a format that is reasonably easy
 to parse, to the Serial interface.
 
@@ -24,11 +24,12 @@ There is nothing configurable about the plugin, using it is as simple as
 including the header file, and declaring it used:
 
 ```c++
-#include <Akela-KeyLogger.h>
+#include <Kaleidoscope.h>
+#include <Kaleidoscope-KeyLogger.h>
 
 void setup (void) {
-  Keyboardio.setup (KEYMAP_SIZE);
-  Keyboardio.use (&KeyLogger, NULL);
+  Kaleidoscope.setup (KEYMAP_SIZE);
+  Kaleidoscope.use (&KeyLogger, NULL);
 }
 ```
 
@@ -50,4 +51,4 @@ KL: row=1, col=2, pressed=0, defaultLayer=0, layerState=1, mappedKey.flags=0, ma
 Starting from the [example][plugin:example] is the recommended way of getting
 started with the plugin.
 
- [plugin:example]: https://github.com/keyboardio/Akela-KeyLogger/blob/master/examples/KeyLogger/KeyLogger.ino
+ [plugin:example]: https://github.com/keyboardio/Kaleidoscope-KeyLogger/blob/master/examples/KeyLogger/KeyLogger.ino

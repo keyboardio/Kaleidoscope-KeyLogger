@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * Akela -- Animated Keyboardio Extension Library for Anything
+ * Kaleidoscope-KeyLogger -- A key logger
  * Copyright (C) 2016, 2017  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <Akela-KeyLogger.h>
+#include <Kaleidoscope.h>
+#include <Kaleidoscope-KeyLogger.h>
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   [0] = KEYMAP_STACKED
@@ -40,10 +41,10 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 };
 
 void setup () {
-  Keyboardio.setup (KEYMAP_SIZE);
-  Keyboardio.use (&KeyLogger, NULL);
+  Kaleidoscope.setup (KEYMAP_SIZE);
+  Kaleidoscope.use (&KeyLogger, NULL);
 }
 
 void loop () {
-  Keyboardio.loop ();
+  Kaleidoscope.loop ();
 }
