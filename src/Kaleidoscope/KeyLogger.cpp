@@ -20,21 +20,21 @@
 
 namespace KaleidoscopePlugins {
 
-  KeyLogger::KeyLogger (void) {
-  }
+KeyLogger::KeyLogger (void) {
+}
 
-  void
-  KeyLogger::begin (void) {
+void
+KeyLogger::begin (void) {
     Serial.begin (9600);
     event_handler_hook_use (this->logger);
-  }
+}
 
-  Key
-  KeyLogger::logger (Key mappedKey, byte row, byte col, uint8_t keyState) {
+Key
+KeyLogger::logger (Key mappedKey, byte row, byte col, uint8_t keyState) {
     if (!key_toggled_on (keyState) && !key_toggled_off (keyState))
-      return mappedKey;
+        return mappedKey;
     if (keyState & INJECTED)
-      return mappedKey;
+        return mappedKey;
 
     Serial.print (F("KL: row="));
     Serial.print (row, DEC);
@@ -52,7 +52,7 @@ namespace KaleidoscopePlugins {
     Serial.println (mappedKey.keyCode, HEX);
 
     return mappedKey;
-  }
+}
 };
 
 KaleidoscopePlugins::KeyLogger KeyLogger;
