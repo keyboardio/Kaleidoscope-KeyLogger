@@ -20,7 +20,8 @@
 
 #include <Kaleidoscope.h>
 
-namespace KaleidoscopePlugins {
+namespace kaleidoscope {
+
 class KeyLogger : public KaleidoscopePlugin {
  public:
   KeyLogger(void);
@@ -28,8 +29,9 @@ class KeyLogger : public KaleidoscopePlugin {
   void begin(void) final;
 
  private:
-  static Key logger(Key mappedKey, byte row, byte col, uint8_t keyState);
-};
+  static Key logger(Key mapped_key, byte row, byte col, uint8_t key_state);
 };
 
-extern KaleidoscopePlugins::KeyLogger KeyLogger;
+}
+
+extern kaleidoscope::KeyLogger KeyLogger;
