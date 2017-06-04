@@ -20,38 +20,38 @@
 
 namespace KaleidoscopePlugins {
 
-KeyLogger::KeyLogger (void) {
+KeyLogger::KeyLogger(void) {
 }
 
 void
-KeyLogger::begin (void) {
-    Serial.begin (9600);
-    event_handler_hook_use (this->logger);
+KeyLogger::begin(void) {
+  Serial.begin(9600);
+  event_handler_hook_use(this->logger);
 }
 
 Key
-KeyLogger::logger (Key mappedKey, byte row, byte col, uint8_t keyState) {
-    if (!key_toggled_on (keyState) && !key_toggled_off (keyState))
-        return mappedKey;
-    if (keyState & INJECTED)
-        return mappedKey;
-
-    Serial.print (F("KL: row="));
-    Serial.print (row, DEC);
-    Serial.print (F(", col="));
-    Serial.print (col, DEC);
-    Serial.print (F(", pressed="));
-    Serial.print (key_toggled_on (keyState), DEC);
-    Serial.print (F(", defaultLayer="));
-    Serial.print (Layer.defaultLayer (), DEC);
-    Serial.print (F(", layerState="));
-    Serial.print (Layer.getLayerState (), BIN);
-    Serial.print (F(", mappedKey.flags="));
-    Serial.print (mappedKey.flags, BIN);
-    Serial.print (F(", mappedKey.keyCode="));
-    Serial.println (mappedKey.keyCode, HEX);
-
+KeyLogger::logger(Key mappedKey, byte row, byte col, uint8_t keyState) {
+  if (!key_toggled_on(keyState) && !key_toggled_off(keyState))
     return mappedKey;
+  if (keyState & INJECTED)
+    return mappedKey;
+
+  Serial.print(F("KL: row="));
+  Serial.print(row, DEC);
+  Serial.print(F(", col="));
+  Serial.print(col, DEC);
+  Serial.print(F(", pressed="));
+  Serial.print(key_toggled_on(keyState), DEC);
+  Serial.print(F(", defaultLayer="));
+  Serial.print(Layer.defaultLayer(), DEC);
+  Serial.print(F(", layerState="));
+  Serial.print(Layer.getLayerState(), BIN);
+  Serial.print(F(", mappedKey.flags="));
+  Serial.print(mappedKey.flags, BIN);
+  Serial.print(F(", mappedKey.keyCode="));
+  Serial.println(mappedKey.keyCode, HEX);
+
+  return mappedKey;
 }
 };
 
