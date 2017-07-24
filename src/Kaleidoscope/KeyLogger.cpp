@@ -29,7 +29,7 @@ void KeyLogger::begin(void) {
 }
 
 Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
-  if (!key_toggled_on(key_state) && !key_toggled_off(key_state))
+  if (!keyToggledOn(key_state) && !keyToggledOff(key_state))
     return mapped_key;
   if (key_state & INJECTED)
     return mapped_key;
@@ -39,7 +39,7 @@ Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
   Serial.print(F(", col="));
   Serial.print(col, DEC);
   Serial.print(F(", pressed="));
-  Serial.print(key_toggled_on(key_state), DEC);
+  Serial.print(keyToggledOn(key_state), DEC);
   Serial.print(F(", defaultLayer="));
   Serial.print(Layer.defaultLayer(), DEC);
   Serial.print(F(", layerState="));
