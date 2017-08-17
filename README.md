@@ -31,7 +31,7 @@ including the header file, and declaring it used:
 #include <Kaleidoscope-KeyLogger.h>
 
 void setup() {
-  USE_PLUGINS(&KeyLogger);
+  Kaleidoscope.use(&KeyLogger);
 
   Kaleidoscope.setup ();
 }

@@ -39,7 +39,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 };
 
 void setup() {
-  USE_PLUGINS(&KeyLogger);
+  Kaleidoscope.use(&KeyLogger);
 
   Kaleidoscope.setup();
 }

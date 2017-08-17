@@ -25,7 +25,7 @@ KeyLogger::KeyLogger(void) {
 
 void KeyLogger::begin(void) {
   Serial.begin(9600);
-  event_handler_hook_use(this->logger);
+  Kaleidoscope.useEventHandlerHook(this->logger);
 }
 
 Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
