@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
  * Kaleidoscope-KeyLogger -- A key logger
- * Copyright (C) 2016, 2017  Gergely Nagy
+ * Copyright (C) 2016, 2017, 2018  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +47,9 @@ Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
   Serial.print(F(", mapped_key.flags="));
   Serial.print(mapped_key.flags, BIN);
   Serial.print(F(", mapped_key.keyCode="));
-  Serial.println(mapped_key.keyCode, HEX);
+  Serial.print(mapped_key.keyCode, HEX);
+  Serial.print(F(", timestamp="));
+  Serial.println(millis(), DEC);
 
   return mapped_key;
 }
