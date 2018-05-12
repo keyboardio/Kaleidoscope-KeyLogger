@@ -30,9 +30,10 @@ including the header file, and declaring it used:
 #include <Kaleidoscope.h>
 #include <Kaleidoscope-KeyLogger.h>
 
-void setup() {
-  Kaleidoscope.use(&KeyLogger);
+KALEIDOSCOPE_INIT_USER(KeyLogger);
 
+void setup() {
+  Serial.begin(9600);
   Kaleidoscope.setup ();
 }
 ```

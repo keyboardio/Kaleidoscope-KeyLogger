@@ -20,19 +20,11 @@
 
 namespace kaleidoscope {
 
-KeyLogger::KeyLogger(void) {
-}
-
-void KeyLogger::begin(void) {
-  Serial.begin(9600);
-  Kaleidoscope.useEventHandlerHook(this->logger);
-}
-
-Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
+EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state) {
   if (!keyToggledOn(key_state) && !keyToggledOff(key_state))
-    return mapped_key;
+    return EventHandlerResult::OK;
   if (key_state & INJECTED)
-    return mapped_key;
+    return EventHandlerResult::OK;
 
   Serial.print(F("KL: row="));
   Serial.print(row, DEC);
@@ -51,8 +43,22 @@ Key KeyLogger::logger(Key mapped_key, byte row, byte col, uint8_t key_state) {
   Serial.print(F(", timestamp="));
   Serial.println(millis(), DEC);
 
-  return mapped_key;
+  return EventHandlerResult::OK;
 }
+
+// Legacy V1 API
+#if KALEIDOSCOPE_ENABLE_V1_PLUGIN_API
+void KeyLogger::begin() {
+  Kaleidoscope.useEventHandlerHook(legacyEventHandler);
+}
+
+Key legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state) {
+  EventHandlerResult r = ::KeyLogger.onKeyswitchEvent(mapped_key, row, col, key_state);
+  if (r == EventHandlerResult::OK)
+    return mapped_key;
+  return Key_NoKey;
+}
+#endif
 
 }
 
