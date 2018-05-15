@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
  * Kaleidoscope-KeyLogger -- A key logger
- * Copyright (C) 2016, 2017  Gergely Nagy
+ * Copyright (C) 2016, 2017, 2018  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,17 @@
 
 namespace kaleidoscope {
 
-class KeyLogger : public KaleidoscopePlugin {
+class KeyLogger : public kaleidoscope::Plugin {
  public:
-  KeyLogger(void);
+  KeyLogger(void) {};
 
-  void begin(void) final;
+  EventHandlerResult onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state);
 
- private:
-  static Key logger(Key mapped_key, byte row, byte col, uint8_t key_state);
+#if KALEIDOSCOPE_ENABLE_V1_PLUGIN_API
+ protected:
+  void begin();
+  static Key legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state);
+#endif
 };
 
 }
