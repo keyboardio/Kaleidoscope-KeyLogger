@@ -52,7 +52,7 @@ void KeyLogger::begin() {
   Kaleidoscope.useEventHandlerHook(legacyEventHandler);
 }
 
-Key legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state) {
+Key KeyLogger::legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state) {
   EventHandlerResult r = ::KeyLogger.onKeyswitchEvent(mapped_key, row, col, key_state);
   if (r == EventHandlerResult::OK)
     return mapped_key;
