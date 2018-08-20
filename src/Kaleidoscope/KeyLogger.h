@@ -27,16 +27,6 @@ class KeyLogger : public kaleidoscope::Plugin {
   KeyLogger(void) {};
 
   EventHandlerResult onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state);
-
-#if KALEIDOSCOPE_ENABLE_V1_PLUGIN_API
-  kaleidoscope::EventHandlerResult onSetup() {
-    return kaleidoscope::EventHandlerResult::OK;
-  }
-
- protected:
-  void begin();
-  static Key legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state);
-#endif
 };
 
 }

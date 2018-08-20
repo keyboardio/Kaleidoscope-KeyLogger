@@ -46,20 +46,6 @@ EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, byte row, byte c
   return EventHandlerResult::OK;
 }
 
-// Legacy V1 API
-#if KALEIDOSCOPE_ENABLE_V1_PLUGIN_API
-void KeyLogger::begin() {
-  Kaleidoscope.useEventHandlerHook(legacyEventHandler);
-}
-
-Key KeyLogger::legacyEventHandler(Key mapped_key, byte row, byte col, uint8_t key_state) {
-  EventHandlerResult r = ::KeyLogger.onKeyswitchEvent(mapped_key, row, col, key_state);
-  if (r == EventHandlerResult::OK)
-    return mapped_key;
-  return Key_NoKey;
-}
-#endif
-
 }
 
 kaleidoscope::KeyLogger KeyLogger;
