@@ -1,5 +1,7 @@
 # Kaleidoscope-KeyLogger
 
+[![Build Status][travis:image]][travis:status]
+
  [travis:image]: https://travis-ci.org/keyboardio/Kaleidoscope-KeyLogger.svg?branch=master
  [travis:status]: https://travis-ci.org/keyboardio/Kaleidoscope-KeyLogger
 
