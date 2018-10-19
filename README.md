@@ -1,13 +1,7 @@
 # Kaleidoscope-KeyLogger
 
-![status][st:stable] [![Build Status][travis:image]][travis:status]
-
  [travis:image]: https://travis-ci.org/keyboardio/Kaleidoscope-KeyLogger.svg?branch=master
  [travis:status]: https://travis-ci.org/keyboardio/Kaleidoscope-KeyLogger
-
- [st:stable]: https://img.shields.io/badge/stable-✔-black.svg?style=flat&colorA=44cc11&colorB=494e52
- [st:broken]: https://img.shields.io/badge/broken-X-black.svg?style=flat&colorA=e05d44&colorB=494e52
- [st:experimental]: https://img.shields.io/badge/experimental----black.svg?style=flat&colorA=dfb317&colorB=494e52
 
 The `KeyLogger` plugin, as the name suggests, implements a key logger for the
 Kaleidoscope firmware. It logs the row and column of every key press and release,
