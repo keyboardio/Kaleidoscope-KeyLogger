@@ -15,9 +15,11 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <Kaleidoscope.h>
 #include <Kaleidoscope-KeyLogger.h>
 
 namespace kaleidoscope {
+namespace plugin {
 
 EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state) {
   if (!keyToggledOn(key_state) && !keyToggledOff(key_state))
@@ -46,5 +48,6 @@ EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, byte row, byte c
 }
 
 }
+}
 
-kaleidoscope::KeyLogger KeyLogger;
+kaleidoscope::plugin::KeyLogger KeyLogger;

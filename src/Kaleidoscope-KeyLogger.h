@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
  * Kaleidoscope-KeyLogger -- A key logger
- * Copyright (C) 2016, 2017  Keyboard.io, Inc
+ * Copyright (C) 2016, 2017, 2018  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -17,4 +17,19 @@
 
 #pragma once
 
-#include <Kaleidoscope/KeyLogger.h>
+#include <Kaleidoscope.h>
+
+namespace kaleidoscope {
+namespace plugin {
+
+class KeyLogger : public kaleidoscope::Plugin {
+ public:
+  KeyLogger(void) {};
+
+  EventHandlerResult onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state);
+};
+
+}
+}
+
+extern kaleidoscope::plugin::KeyLogger KeyLogger;
