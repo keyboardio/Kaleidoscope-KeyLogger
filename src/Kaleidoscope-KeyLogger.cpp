@@ -21,26 +21,24 @@
 namespace kaleidoscope {
 namespace plugin {
 
-EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, byte row, byte col, uint8_t key_state) {
+EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, KeyAddr key_addr, uint8_t key_state) {
   if (!keyToggledOn(key_state) && !keyToggledOff(key_state))
     return EventHandlerResult::OK;
   if (key_state & INJECTED)
     return EventHandlerResult::OK;
 
   Serial.print(F("KL: row="));
-  Serial.print(row, DEC);
+  Serial.print(key_addr.row(), DEC);
   Serial.print(F(", col="));
-  Serial.print(col, DEC);
+  Serial.print(key_addr.col(), DEC);
   Serial.print(F(", pressed="));
   Serial.print(keyToggledOn(key_state), DEC);
-  Serial.print(F(", defaultLayer="));
-  Serial.print(Layer.defaultLayer(), DEC);
   Serial.print(F(", layerState="));
   Serial.print(Layer.getLayerState(), BIN);
   Serial.print(F(", mapped_key.flags="));
-  Serial.print(mapped_key.flags, BIN);
+  Serial.print(mapped_key.getFlags(), BIN);
   Serial.print(F(", mapped_key.keyCode="));
-  Serial.print(mapped_key.keyCode, HEX);
+  Serial.print(mapped_key.getKeyCode(), HEX);
   Serial.print(F(", timestamp="));
   Serial.println(millis(), DEC);
 
