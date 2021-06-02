@@ -42,7 +42,6 @@ KEYMAPS(
 KALEIDOSCOPE_INIT_PLUGINS(KeyLogger);
 
 void setup() {
-  Serial.begin(9600);
   Kaleidoscope.setup();
 }
 

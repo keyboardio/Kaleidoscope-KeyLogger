@@ -21,26 +21,31 @@
 namespace kaleidoscope {
 namespace plugin {
 
-EventHandlerResult KeyLogger::onKeyswitchEvent(Key &mapped_key, KeyAddr key_addr, uint8_t key_state) {
-  if (!keyToggledOn(key_state) && !keyToggledOff(key_state))
-    return EventHandlerResult::OK;
-  if (key_state & INJECTED)
+EventHandlerResult KeyLogger::onKeyswitchEvent(KeyEvent &event) {
+  // If the plugin has already processed and released this event, ignore it.
+  // There's no need to update the event tracker explicitly.
+  if (event_tracker_.shouldIgnore(event))
     return EventHandlerResult::OK;
 
-  Serial.print(F("KL: row="));
-  Serial.print(key_addr.row(), DEC);
-  Serial.print(F(", col="));
-  Serial.print(key_addr.col(), DEC);
-  Serial.print(F(", pressed="));
-  Serial.print(keyToggledOn(key_state), DEC);
-  Serial.print(F(", layerState="));
-  Serial.print(Layer.getLayerState(), BIN);
-  Serial.print(F(", mapped_key.flags="));
-  Serial.print(mapped_key.getFlags(), BIN);
-  Serial.print(F(", mapped_key.keyCode="));
-  Serial.print(mapped_key.getKeyCode(), HEX);
-  Serial.print(F(", timestamp="));
-  Serial.println(millis(), DEC);
+  // If `event.addr` is valid, or `event.state` is explicitly marked as
+  // injected, ignore the event.
+  if (! event.addr.isValid() || (event.state & INJECTED) != 0)
+    return EventHandlerResult::OK;
+
+  Runtime.serialPort().print(F("KL: row="));
+  Runtime.serialPort().print(event.addr.row(), DEC);
+  Runtime.serialPort().print(F(", col="));
+  Runtime.serialPort().print(event.addr.col(), DEC);
+  Runtime.serialPort().print(F(", pressed="));
+  Runtime.serialPort().print(keyToggledOn(event.state), DEC);
+  Runtime.serialPort().print(F(", layer="));
+  Runtime.serialPort().print(Layer.lookupActiveLayer(event.addr), BIN);
+  Runtime.serialPort().print(F(", key_flags="));
+  Runtime.serialPort().print(event.key.getFlags(), BIN);
+  Runtime.serialPort().print(F(", key_code="));
+  Runtime.serialPort().print(event.key.getKeyCode(), HEX);
+  Runtime.serialPort().print(F(", timestamp="));
+  Runtime.serialPort().println(Runtime.millisAtCycleStart(), DEC);
 
   return EventHandlerResult::OK;
 }

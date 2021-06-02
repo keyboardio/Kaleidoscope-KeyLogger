@@ -19,14 +19,17 @@
 
 #include <Kaleidoscope.h>
 
+#include "kaleidoscope/KeyEventTracker.h"
+
 namespace kaleidoscope {
 namespace plugin {
 
 class KeyLogger : public kaleidoscope::Plugin {
  public:
-  KeyLogger(void) {};
+  EventHandlerResult onKeyswitchEvent(KeyEvent &event);
 
-  EventHandlerResult onKeyswitchEvent(Key &mapped_key, KeyAddr key_addr, uint8_t key_state);
+ private:
+  KeyEventTracker event_tracker_;
 };
 
 }

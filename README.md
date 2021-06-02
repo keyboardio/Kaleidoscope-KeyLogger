@@ -26,15 +26,20 @@ including the header file, and declaring it used:
 #include <Kaleidoscope.h>
 #include <Kaleidoscope-KeyLogger.h>
 
-KALEIDOSCOPE_INIT_USER(KeyLogger);
+KALEIDOSCOPE_INIT_PLUGINS(KeyLogger);
 
 void setup() {
   Serial.begin(9600);
-  Kaleidoscope.setup ();
+  Kaleidoscope.setup();
 }
 ```
 
 That, in itself, will do all that is necessary to have the key logger active.
+
+Note: For most accurate physical keypress data, KeyLogger should be the first
+plugin in `KALEIDOSCOPE_INIT_PLUGINS()`, but if other plugins that change the
+value of keys (e.g. Qukeys, TapDance, Leader, etc.) are also being used, it may
+be useful to change the plugin order.
 
 ## The output
 
@@ -43,8 +48,8 @@ Monitor* built into the Arduino IDE), one will be able to see the following
 output:
 
 ```
-KL: row=1, col=2, pressed=1, defaultLayer=0, layerState=1, mappedKey.flags=0, mappedKey.keyCode=ff
-KL: row=1, col=2, pressed=0, defaultLayer=0, layerState=1, mappedKey.flags=0, mappedKey.keyCode=ff
+KL: row=1, col=2, pressed=1, layer=0, key_flags=0, key_code=FF
+KL: row=1, col=2, pressed=0, layer=0, key_flags=0, key_code=FF
 ```
 
 ## Further reading
