@@ -39,7 +39,7 @@ EventHandlerResult KeyLogger::onKeyswitchEvent(KeyEvent &event) {
   Runtime.serialPort().print(F(", pressed="));
   Runtime.serialPort().print(keyToggledOn(event.state), DEC);
   Runtime.serialPort().print(F(", layer="));
-  Runtime.serialPort().print(Layer.lookupActiveLayer(event.addr), BIN);
+  Runtime.serialPort().print(Layer.lookupActiveLayer(event.addr), DEC);
   Runtime.serialPort().print(F(", key_flags="));
   Runtime.serialPort().print(event.key.getFlags(), BIN);
   Runtime.serialPort().print(F(", key_code="));
