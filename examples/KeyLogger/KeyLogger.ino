@@ -19,12 +19,12 @@
 #include <Kaleidoscope-KeyLogger.h>
 
 // *INDENT-OFF*
-const Key keymaps[][ROWS][COLS] PROGMEM = {
+KEYMAPS(
   [0] = KEYMAP_STACKED
-  (Key_NoKey, Key_1, Key_2, Key_3, Key_4, Key_5, Key_NoKey,
-   Key_Backtick,      Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,        Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown,      Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+  (Key_NoKey,    Key_1, Key_2, Key_3, Key_4, Key_5, Key_NoKey,
+   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
+   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
 
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    Key_NoKey,
@@ -36,13 +36,12 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
    Key_RightShift, Key_RightAlt, Key_Spacebar, Key_RightControl,
    Key_NoKey),
-};
+)
 // *INDENT-ON*
 
 KALEIDOSCOPE_INIT_PLUGINS(KeyLogger);
 
 void setup() {
-  Serial.begin(9600);
   Kaleidoscope.setup();
 }
 
